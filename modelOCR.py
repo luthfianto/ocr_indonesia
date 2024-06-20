@@ -229,7 +229,7 @@ class numericalDetectron2(object):
         boxes_class_score = np.concatenate(
             (boxes_n_class, scores.reshape(-1, 1)), axis=1)
         boxes_class_score = np.sort(boxes_class_score.view(
-            "i8,i8,i8,i8,i8,i8"), order=['f0'], axis=0).view(np.int)
+            "i8,i8,i8,i8,i8,i8"), order=['f0'], axis=0).view(np.int32)
         boxes_class_score = nms_boxes(boxes_class_score)
         final_pred = [self.name_class[char_id] for char_id in boxes_class_score[:, 4]]
         final_pred = "".join(final_pred)
@@ -531,7 +531,7 @@ class alphabeticalDetectron2(object):
         boxes_class_score = np.concatenate(
             (boxes_n_class, scores.reshape(-1, 1)), axis=1)
         boxes_class_score = np.sort(boxes_class_score.view(
-            "i8,i8,i8,i8,i8,i8"), order=['f0'], axis=0).view(np.int)
+            "i8,i8,i8,i8,i8,i8"), order=['f0'], axis=0).view(np.int32)
         boxes_class_score = nms_boxes(boxes_class_score)
         final_pred = [self.name_class[char_id]
                       for char_id in boxes_class_score[:, 4]]
